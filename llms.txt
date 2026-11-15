@@ -5,7 +5,7 @@
 Start with AGENTS.md for rules and checklists.
 
 ## Core
-- [AGENTS.md](AGENTS.md): hard rules, defaults, checklists, common mistakes
+- [AGENTS.md](AGENTS.md): hard rules, defaults, checklists, common mistakes (CLAUDE.md imports it)
 - [README.md](README.md): overview and table of contents
 - [GLOSSARY.md](GLOSSARY.md): terms and acronyms
 - [REFERENCES.md](REFERENCES.md): books, papers, tools

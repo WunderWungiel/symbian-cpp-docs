@@ -118,27 +118,30 @@ inline void Panic(TMyAppPanic aReason)
 
 | Panic | Meaning |
 |-------|---------|
-| `KERN-EXEC 0` | Bad handle (using a closed/invalid R object) |
-| `KERN-EXEC 3` | **Access violation** — NULL/dangling pointer, misalignment, stack overflow |
-| `KERN-EXEC 15` | A timer request was issued while one was outstanding |
+| `KERN-EXEC 0` | The kernel can't find the object for a handle — typically an R object used before it was successfully opened, or after `Close()` |
+| `KERN-EXEC 3` | **Unhandled exception** — most often an access violation (NULL or dangling pointer), also misalignment or stack overflow |
+| `KERN-EXEC 15` | `RTimer::At()`/`After()`/`Lock()` called while a timer event is still outstanding |
 | `E32USER-CBase 40` | Active object destroyed while its request is still outstanding (destructor didn't call `Cancel()`) |
 | `E32USER-CBase 42` | `CActive::SetActive()` called on an AO that is already active |
 | `E32USER-CBase 46` | **Stray signal** — a request completed for an AO that wasn't active (forgot `SetActive()`, AO not added to the scheduler, or the request used a `TRequestStatus` other than `iStatus`) |
 | `E32USER-CBase 47` | `RunL()` left and `RunError()` returned the error → default `CActiveScheduler::Error()` panics |
-| `E32USER-CBase 66` | Cleanup stack used with no TRAP harness (no mark) |
-| `E32USER-CBase 69` | No cleanup stack installed in this thread (`CTrapCleanup` missing) |
-| `E32USER-CBase 90` | `Pop(ptr)`/`PopAndDestroy(ptr)` — the top item isn't `ptr` |
-| other `E32USER-CBase` | Cleanup stack imbalance — more pops than pushes, or items left pushed when a TRAP exits |
-| `USER 9`, `USER 10` | Descriptor position/length out of range (`Left`, `Right`, `Mid`, `Delete`, `Replace`…) |
-| `USER 11` | **Descriptor overflow** — writing more than `MaxLength()` |
-| `USER 42` | Freeing a heap cell with a bad address (e.g. via an M-class pointer) |
-| `USER 44` | Double `delete` (heap corruption) |
+| `E32USER-CBase 63` | Nested TRAPs: popping too many items |
+| `E32USER-CBase 64`, `65` | Popping more items than are on the cleanup stack |
+| `E32USER-CBase 66` | `CleanupStack::PushL()` with no TRAP harness (no mark) |
+| `E32USER-CBase 69` | No cleanup stack installed in this thread (`CTrapCleanup::New()` not called) |
+| `E32USER-CBase 70` | Negative count passed to `Pop()`/`PopAndDestroy()` |
+| `E32USER-CBase 71` | Leaving a TRAP with items still on the cleanup stack (must be balanced) |
+| `E32USER-CBase 90` | `Pop(ptr)`/`PopAndDestroy(ptr)`: the item popped isn't `ptr` |
+| `USER 0` | `User::Invariant()` called (also what `ASSERT()` uses) |
+| `USER 9` / `USER 21` | `operator[]` index out of bounds on a 16-bit / 8-bit descriptor |
+| `USER 10` / `USER 22` | Position out of bounds in a 16-bit / 8-bit descriptor function (`Left`, `Mid`, `Replace`…) |
+| `USER 11` / `USER 23` | **Descriptor overflow**: an operation would exceed `MaxLength()` (16-bit / 8-bit) |
+| `USER 42` | A pointer passed to a heap function doesn't point to a valid cell (e.g. deleting via an M-class pointer) |
+| `USER 44` | Heap corruption detected while freeing (a freed cell overlaps the free list), typically a double `delete` |
 | `USER 130` | `RArray`/`RPointerArray` index out of bounds |
-| `USER 133` | `TFixedArray` index out of bounds (UDEB) |
+| `USER 133` | `TFixedArray::At()`/`operator[]` index out of bounds |
 | `ALLOC: <addr>` | **Memory leak** detected at exit (UDEB, by `__UHEAP_MARKEND` / app exit) |
-| `ViewSrv 11` | App didn't respond to the view server in time (long synchronous work in the UI thread) |
-| `EIKCOCTL 70`, `EIKON-LISTBOX` | UI control misuse |
-| `CONE 14`/`CONE 8` | Control environment errors (e.g. control on stack twice) |
+| `ViewSrv 11` | An app's view-server active object didn't respond in time: long synchronous work or blocking dialogs in the UI thread, or busy high-priority AOs (it can even hit *other* apps) |
 | `Kill`/`Terminate` | Not a panic: the process was killed |
 
 ### Seeing panic details on a device

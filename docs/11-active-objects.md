@@ -9,7 +9,7 @@
 * The thread's **active scheduler** runs an event loop waiting on the thread's **request semaphore**.
 * Each **active object** (AO) owns one `TRequestStatus iStatus` and can have **at most one request outstanding**.
 * When a request completes, the service provider writes the result into `iStatus` and signals the thread. The scheduler finds the highest-priority AO whose request has completed and calls its **`RunL()`**.
-* This is **cooperative (non-pre-emptive) multitasking within one thread**: `RunL()` is never interrupted by another `RunL()` in the same thread. A long `RunL()` blocks everything else (including UI redraws and key handling — and on S60 a UI thread blocked for ~10 s gets a `ViewSrv 11` panic).
+* This is **cooperative (non-pre-emptive) multitasking within one thread**: `RunL()` is never interrupted by another `RunL()` in the same thread. A long `RunL()` blocks everything else (including UI redraws and key handling — and on S60, if the app's view-server active object can't answer the View Server in time, the app gets a `ViewSrv 11` panic. The View Server's AO runs at standard priority, so keep long-running AOs below `EPriorityStandard`).
 
 ```
        Thread

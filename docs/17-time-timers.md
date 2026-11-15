@@ -201,7 +201,7 @@ private:
 ```
 
 * The callback must be a static member or free function `TInt F(TAny*)`; pass `this` as the `TCallBack` argument.
-* `CPeriodic` keeps firing until `Cancel()`; don't call `Start()` while active. Some books (including the source book) say returning `EFalse` from the callback stops it — in the actual implementation `CPeriodic` ignores the return value, so **call `Cancel()`** (it's safe to do so from inside the callback). **The callback cannot leave** — trap internally.
+* `CPeriodic` keeps firing until `Cancel()`; don't call `Start()` while active. Some books (including the source book) say returning `EFalse` from the callback stops it. The SDK's `TCallBack` reference says the opposite: `CPeriodic` **ignores** the return value (only `CIdle` uses it). So **call `Cancel()`** (it's safe to do so from inside the callback). **The callback cannot leave** — trap internally.
 * Periods aren't guaranteed exact; missed ticks aren't reported. For animations/games use `CPeriodic` with ~20–50 ms, or `CHeartbeat` to detect lag.
 
 ## 17.7 `CHeartbeat` — once-a-second, synchronised
