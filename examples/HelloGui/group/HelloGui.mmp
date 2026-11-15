@@ -1,0 +1,26 @@
+// Minimal S60 3rd/5th Edition GUI application
+TARGET            HelloGui_0xE6205EE3.exe
+TARGETTYPE        exe
+UID               0x100039CE 0xE6205EE3
+CAPABILITY        NONE
+VENDORID          0
+EPOCSTACKSIZE     0x5000          // GUI apps need >= 20 KB
+
+SOURCEPATH        ..\src
+SOURCE            HelloGui.cpp HelloGuiApplication.cpp HelloGuiDocument.cpp
+SOURCE            HelloGuiAppUi.cpp HelloGuiContainer.cpp
+
+SOURCEPATH        ..\data
+START RESOURCE    HelloGui_0xE6205EE3.rss      // main resource: must come before _reg.rss
+HEADER
+TARGETPATH        \resource\apps
+END
+START RESOURCE    HelloGui_0xE6205EE3_reg.rss
+TARGETPATH        \private\10003a3f\apps
+END
+
+USERINCLUDE       ..\inc
+SYSTEMINCLUDE     \epoc32\include
+
+LIBRARY           euser.lib apparc.lib cone.lib eikcore.lib avkon.lib
+LIBRARY           eikcoctl.lib gdi.lib ws32.lib

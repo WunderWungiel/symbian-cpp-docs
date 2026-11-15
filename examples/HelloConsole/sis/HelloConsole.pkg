@@ -1,0 +1,9 @@
+; HelloConsole.pkg — build with: makesis HelloConsole.pkg, then signsis
+&EN
+#{"HelloConsole"}, (0xE6205EE2), 1, 0, 0
+%{"Example"}
+:"Example"
+[0x101F7961], 0, 0, 0, {"S60ProductID"}     ; S60 3rd Edition and later
+
+"$(EPOCROOT)Epoc32\release\$(PLATFORM)\$(TARGET)\HelloConsole_0xE6205EE2.exe" - "!:\sys\bin\HelloConsole_0xE6205EE2.exe"
+; No registration file: start it from a file manager or add a _reg.rss (see docs/12-applications.md)

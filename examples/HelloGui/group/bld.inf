@@ -1,0 +1,6 @@
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_MMPFILES
+gnumakefile HelloGui_icons.mk     // builds the MIF icon first
+HelloGui.mmp

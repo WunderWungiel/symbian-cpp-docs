@@ -1,0 +1,13 @@
+// Registration file: puts the app into the menu
+#include <appinfo.rh>
+#include <HelloGui_0xE6205EE3.rsg>
+
+UID2 KUidAppRegistrationResourceFile
+UID3 0xE6205EE3
+
+RESOURCE APP_REGISTRATION_INFO
+    {
+    app_file = "HelloGui_0xE6205EE3";
+    localisable_resource_file = "\\resource\\apps\\HelloGui_0xE6205EE3";
+    localisable_resource_id   = R_HELLOGUI_LOCALISABLE_APP_INFO;
+    }

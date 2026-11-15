@@ -1,0 +1,12 @@
+; HelloGui.pkg - paths use Carbide.c++ variables. For the command line replace
+; $(EPOCROOT), $(PLATFORM), $(TARGET) with e.g. \Symbian\9.2\S60_3rd_FP1\, gcce, urel
+&EN
+#{"HelloGui"}, (0xE6205EE3), 1, 0, 0
+%{"Example"}
+:"Example"
+[0x101F7961], 0, 0, 0, {"S60ProductID"}
+
+"$(EPOCROOT)Epoc32\release\$(PLATFORM)\$(TARGET)\HelloGui_0xE6205EE3.exe"   - "!:\sys\bin\HelloGui_0xE6205EE3.exe"
+"$(EPOCROOT)Epoc32\data\z\resource\apps\HelloGui_0xE6205EE3.rsc"             - "!:\resource\apps\HelloGui_0xE6205EE3.rsc"
+"$(EPOCROOT)Epoc32\data\z\resource\apps\HelloGui_0xE6205EE3.mif"             - "!:\resource\apps\HelloGui_0xE6205EE3.mif"
+"$(EPOCROOT)Epoc32\data\z\private\10003a3f\apps\HelloGui_0xE6205EE3_reg.rsc" - "!:\private\10003a3f\import\apps\HelloGui_0xE6205EE3_reg.rsc"

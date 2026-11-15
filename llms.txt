@@ -1,0 +1,40 @@
+# Symbian C++ Documentation
+
+> Complete reference for native Symbian C++ (Symbian OS 9.x / S60 3rd-5th Edition, Symbian^3): platform security, build system, language idioms (leaves, cleanup stack, two-phase construction, descriptors, active objects) and system APIs.
+
+Start with AGENTS.md for rules and checklists.
+
+## Core
+- [AGENTS.md](AGENTS.md): hard rules, defaults, checklists, common mistakes
+- [README.md](README.md): overview and table of contents
+- [GLOSSARY.md](GLOSSARY.md): terms and acronyms
+- [REFERENCES.md](REFERENCES.md): books, papers, tools
+
+## Chapters
+- [1. Symbian OS: Platform Overview](docs/01-platform-overview.md)
+- [2. Platform Security: UIDs, Capabilities, Data Caging, Signing](docs/02-platform-security.md)
+- [3. Project Structure: Folders, `bld.inf` and MMP Files](docs/03-project-structure.md)
+- [4. Resource Files and Localization](docs/04-resource-files.md)
+- [5. SDK, Build Tools, Emulator and Packaging](docs/05-sdk-and-build.md)
+- [6. IDEs, Debugging and Toolchains (Then and Now)](docs/06-ide-and-toolchains.md)
+- [7. Symbian C++ Fundamentals: Types, Naming, Class Categories](docs/07-fundamentals.md)
+- [8. Errors, Leaves, Panics, Memory and the Cleanup Stack](docs/08-errors-leaves-cleanup.md)
+- [9. Descriptors (Strings and Binary Buffers)](docs/09-descriptors.md)
+- [10. Arrays and Collections](docs/10-arrays.md)
+- [11. Active Objects and the Active Scheduler](docs/11-active-objects.md)
+- [12. Applications: Console, GUI, Registration, Icons, Autostart](docs/12-applications.md)
+- [13. Libraries: Static LIBs, Shared DLLs, Polymorphic DLLs, Writable Static Data](docs/13-dlls-libraries.md)
+- [14. Processes, Threads, Synchronisation and IPC](docs/14-processes-threads-ipc.md)
+- [15. The Client–Server Framework](docs/15-client-server.md)
+- [16. ECom Plug-ins and Recognizers](docs/16-ecom.md)
+- [17. Time, Dates and Timers](docs/17-time-timers.md)
+- [18. The File System: `RFs`, `TParse`, `CFileMan`, `RFile`](docs/18-file-system.md)
+- [19. Streams and Stores](docs/19-streams-stores.md)
+- [20. Databases: Symbian DBMS (and Symbian SQL)](docs/20-databases.md)
+- [21. Sockets and Networking](docs/21-sockets-networking.md)
+- [22. The Window Server, Key Events and Graphics](docs/22-window-server-graphics.md)
+- [23. Signing and Certification (Symbian Signed)](docs/23-signing-certification.md)
+
+## Examples
+- [examples/HelloConsole](examples/HelloConsole): minimal console EXE with cleanup stack, scheduler and an active-object timer
+- [examples/HelloGui](examples/HelloGui): minimal S60 GUI application with registration, menu and icon

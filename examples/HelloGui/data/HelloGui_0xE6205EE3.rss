@@ -1,0 +1,42 @@
+// Main resource file
+NAME HELO
+
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <appinfo.rh>
+#include "HelloGui.hrh"
+
+RESOURCE RSS_SIGNATURE { }
+RESOURCE TBUF { buf = "HelloGui"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_hellogui_menubar;
+    cba     = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+RESOURCE MENU_BAR r_hellogui_menubar
+    {
+    titles = { MENU_TITLE { menu_pane = r_hellogui_menu; } };
+    }
+
+RESOURCE MENU_PANE r_hellogui_menu
+    {
+    items =
+        {
+        MENU_ITEM { command = EHelloGuiCmdHello; txt = "Say hello"; },
+        MENU_ITEM { command = EAknCmdExit;       txt = "Exit"; }
+        };
+    }
+
+RESOURCE LOCALISABLE_APP_INFO r_hellogui_localisable_app_info
+    {
+    short_caption = "HelloGui";
+    caption_and_icon = CAPTION_AND_ICON_INFO
+        {
+        caption         = "Hello GUI";
+        number_of_icons = 1;
+        icon_file       = "\\resource\\apps\\HelloGui_0xE6205EE3.mif";
+        };
+    }

@@ -1,0 +1,10 @@
+#ifndef __HELLOGUI_HRH__
+#define __HELLOGUI_HRH__
+
+// Command IDs shared by C++ and resources
+enum THelloGuiCommands
+    {
+    EHelloGuiCmdHello = 0x6001
+    };
+
+#endif

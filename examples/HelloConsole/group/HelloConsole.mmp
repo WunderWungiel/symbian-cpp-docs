@@ -1,0 +1,14 @@
+// Minimal console EXE (Symbian OS 9.x)
+TARGET          HelloConsole_0xE6205EE2.exe
+TARGETTYPE      exe
+UID             0 0xE6205EE2          // test-range UID3 (= SID)
+CAPABILITY      NONE
+VENDORID        0
+
+USERINCLUDE     ..\inc
+SYSTEMINCLUDE   \epoc32\include
+
+SOURCEPATH      ..\src
+SOURCE          HelloConsole.cpp Ticker.cpp
+
+LIBRARY         euser.lib
